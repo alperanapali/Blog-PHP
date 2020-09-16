@@ -42,7 +42,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     $id = htmlentities($row['id']);
     $title = htmlentities($row['title']);
-    $des = htmlentities($row['description']);
+    //$des = htmlentities($row['description']);
+    $des = $row['description'];
     $time = htmlentities($row['date']);
 
     echo '<div class="w3-panel w3-sand w3-card-4">';
