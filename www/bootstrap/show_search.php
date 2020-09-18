@@ -30,7 +30,7 @@ if (isset($_GET['q'])) {
     }
     $offset = ($page - 1) * $rowsperpage;
 
-    $sql = "SELECT * FROM posts WHERE title LIKE '%{$q}%' OR description LIKE '%{$q}%' ORDER BY id DESC LIMIT $offset, $rowsperpage";
+    $sql = "SELECT * FROM posts WHERE title LIKE '%$q%' OR description LIKE '%$q%' ORDER BY id DESC LIMIT $offset, $rowsperpage";
     $result = mysqli_query($dbcon, $sql);
 
     if (mysqli_num_rows($result) < 1) {

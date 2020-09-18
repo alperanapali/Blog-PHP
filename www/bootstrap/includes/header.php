@@ -1,11 +1,3 @@
-<?php
-if ($_SESSION['username']) {
-
-} else {
-
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,12 +41,16 @@ if ($_SESSION['username']) {
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact</a>
+                </li>
                 <li class="nav-item" style="">
                     <a class="nav-link" href="register.php">Register</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
-                </li>
+
+
+
+                <?php ?>
 
             </ul>
         </div>

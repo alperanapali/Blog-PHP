@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 $page_title = "Home";
 $page_heading = "Pure PHP Blog";
 $page_subheading = "by Alper";
@@ -23,3 +24,4 @@ include 'includes/header.php';
 <?php
 include 'includes/footer.php'
 ?>
+ob_end_flush();
