@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
 
     mysqli_query($dbcon, $sql2) or die("failed to post" . mysqli_connect_error());
 
-    printf("Posted successfully. <meta http-equiv='refresh' content='2; url=view.php?id=%d'/>",
+    printf("Posted successfully. <meta http-equiv='refresh' content='2; url=postController.php?id=%d'/>",
         mysqli_insert_id($dbcon));
 
 

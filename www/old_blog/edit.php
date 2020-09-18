@@ -28,7 +28,7 @@ if (isset($_POST['upd'])) {
 
     if (mysqli_query($dbcon, $sql2)) {
         echo "Post edited successfully.";
-        echo "<meta http-equiv='refresh' content='2; url=view.php?id=$id' />";
+        echo "<meta http-equiv='refresh' content='2; url=postController.php?id=$id' />";
 
     } else {
         echo "failed to edit." . mysqli_connect_error();

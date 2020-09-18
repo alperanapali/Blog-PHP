@@ -37,25 +37,32 @@ while ($row = mysqli_fetch_assoc($result)) {
     //$des = htmlentities($row['description']);
     $des = $row['description'];
     $posted_by = htmlentities($row['posted_by']);
+    $hits = htmlentities($row['hits']);
+    $image_url = htmlentities($row['image_url']);
     $time = htmlentities($row['date']);
 
-    echo sprintf('<div class="post-preview">
-          <a href="postController.php?id=%1s">
-            <h2 class="post-title">
-            %s
-    </h2>
-            <h3 class="post-subtitle">
-    %s
-    </h3>
+    echo sprintf('
+    <div class="row mt-lg-5">
+        <div class="col-md-7">
+          <a href="post.php?id=%s">
+            <img class="img-fluid align-content-md-center rounded" src=%s alt="" width="400" height="300">
           </a>
-          </p><div class="w3-text-teal">
-          <a href="postController.php?id=%1s">Read more...</a>
+          <hr>
+        </div>
+        <div class="col-md-5">
+          <h3><a href="post.php?id=%s">%s</a></h3>
+          <p>%s</p>
+          <p class="post-meta">Posted by</p> 
+          <a href="#"  >%s</a>
+          <p>on %s</p>
+          <a class="btn btn-primary" href="post.php?id=%s">Read More</a>
+            <hr>
           </div>
-          <p class="post-meta">Posted by
-    <a href="#">%s</a>
-    on %s</p>
-        </div>',
-        $id, $title, substr($des, 0, 200000), $id, $posted_by, $time);
+              
+      
+      ',
+    $id, $image_url, $id, $title, substr( $des, 0, 100), $posted_by, $time, $id);
+
 }
 
 echo "<div class='w3-bar w3-center'>";

@@ -36,7 +36,7 @@ while ($r = mysqli_fetch_assoc($res)) {
     $time = $r['date'];
 
     echo '<div class="w3-panel w3-sand w3-card-4">';
-    echo "<h3><a href='view.php?id=$id'>$title</a></h3><p>";
+    echo "<h3><a href='postController.php?id=$id'>$title</a></h3><p>";
 
     if (strlen($des) > 100) {
         echo substr($des, 0, 100) . "...";
@@ -45,7 +45,7 @@ while ($r = mysqli_fetch_assoc($res)) {
     }
 
     echo '</p><div class="w3-text-teal">';
-    echo "<a href='view.php?id=$id'>Read more</a>";
+    echo "<a href='postController.php?id=$id'>Read more</a>";
 
     echo '</div> <div class="w3-text-grey">';
     echo "$time</div>";

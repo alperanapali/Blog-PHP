@@ -39,10 +39,10 @@
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="new_post.html">About</a>
+            <a class="nav-link" href="new_post.php">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="post.html">Sample Post</a>
+            <a class="nav-link" href="post.php">Sample Post</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
