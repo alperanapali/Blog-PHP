@@ -8,6 +8,8 @@ $page_subheading = "by Alper";
 include 'includes/header.php';
 ?>
 
+
+
   <!-- Main Content -->
   <div class="container">
     <div class="row">
@@ -22,6 +24,6 @@ include 'includes/header.php';
   </div>
 
 <?php
-include 'includes/footer.php'
-?>
+include 'includes/footer.php';
 ob_end_flush();
+?>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 $page_title = "Contact Me";
 $page_heading = "Contact Me";
 $page_subheading = "by Alper";
