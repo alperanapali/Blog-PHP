@@ -36,17 +36,16 @@ EOD;
 
     $html_loged_user = <<<EOD
                 <li class="nav-item">
-                    <a class="nav-link" href="new.php">New Post</a>
+                    <a class="nav-link" href="new_post.php">New Post</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="profile.php"></a>
+                    <a class="nav-link" href="profile.php">$user</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Logout</a>
                 </li>
 
 EOD;
-    echo $_SESSION['username'];
     echo $html_loged_user;
 }
 

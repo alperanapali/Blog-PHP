@@ -12,6 +12,7 @@ include 'includes/header.php'
             <div>
                 <img style='height: 100%; width: 100%; object-fit: contain' src="<?php echo $image_url; ?>" alt="">
             </div>
+            <span class="badge badge-primary"><?php echo $category; ?></span>
             <p class="post-meta"><b>Posted by </b><?php echo $by; ?></p>
 
             <p class="post-meta"><b>On </b><?php echo $time; ?></p>
@@ -32,6 +33,7 @@ include 'includes/header.php'
 
 <!-- Comments -->
 <?php
+
 $csql = "Select * FROM comments WHERE post_id = '$id'";
 $cresult = mysqli_query($dbcon, $csql);
 

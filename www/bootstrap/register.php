@@ -1,5 +1,7 @@
 <?php
+$page_heading = "Register Now!";
 include 'includes/header.php';
+include 'includes/connect.php';
 
 function registry_entries_modifier($entry, $password = false)
 {
@@ -12,13 +14,28 @@ function registry_entries_modifier($entry, $password = false)
     return $entry;
 }
 
+function does_entry_exist($username, $email)
+{
+
+
+}
+
 function does_registry_entries_match($entry, $confirm_entry, $type = ['password', 'email'])
 {
     if($entry == $confirm_entry){
-        filter_var($entry, FILTER_VALIDATE_EMAIL);
+        if($type == 'email'){
+            filter_var($entry, FILTER_VALIDATE_EMAIL);
+            return $entry;
+        }
+        if($type == 'password'){
+            return $entry;
+        }
+    } else{
+        echo "Emails does not match";
     }
 
 }
+
 
 
 if(isset($_POST['reg'])){
@@ -29,8 +46,14 @@ if(isset($_POST['reg'])){
     $password = registry_entries_modifier($_POST['password'], true);
     $confirm_password = registry_entries_modifier($_POST['confirm_password'], true);
 
-}
+    $em = does_registry_entries_match($email, $confirm_email, 'email');
+    $pass = does_registry_entries_match($password, $confirm_password, 'password');
 
+
+
+
+
+}
 
 ?>
 

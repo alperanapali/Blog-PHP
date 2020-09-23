@@ -29,6 +29,8 @@ $by = $row['posted_by'];
 $hits = $row['hits'];
 $image_url = $row['image_url'];
 $time = $row['date'];
+$slug = $row['slug'];
+$category = $row['post_cat'];
 
 //Page input
 $page_title = $title;

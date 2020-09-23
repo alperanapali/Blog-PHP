@@ -18,11 +18,12 @@
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+    <!-- from old blog -->
+    <script src="https://cdn.tiny.cloud/1/3ewdrxaq7tnikz0uz2ur8lybcyabvh33ua4gxzd0ger1v5uz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector:'textarea'});</script>
+
     <!-- Custom styles for this template -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-
-    <!-- Stuff from the first blog -->
-    <script src='tinymce/tinymce.min.js'></script>
 
 </head>
 
@@ -56,7 +57,7 @@
 </nav>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('https://gaiadergi.com/wp-content/uploads/2018/12/4k-wallpaper-abstract-abstract-expressionism-1266808.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -68,7 +69,7 @@
                     <!-- Search -->
                     <form action="show_search.php" method="GET" class="container" >
                         <input type="text" name="q" class="w3-input w3-border " placeholder="Search for anything" required>
-                        <input type="submit" class="btn btn-secondary" value="Search">
+                        <input type="submit" class="btn btn-primary" value="Search">
                     </form>
                 </div>
             </div>

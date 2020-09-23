@@ -2,7 +2,10 @@
 include("connect.php");
 
 // COUNT
-$sql = "SELECT COUNT(*) FROM posts";
+$cat = $_GET['catname'];
+$id = (INT)$_GET['id'];
+
+$sql = "SELECT COUNT('post_cat') FROM posts ";
 $result = mysqli_query($dbcon, $sql);
 $r = mysqli_fetch_row($result);
 $numrows = $r[0];
@@ -23,8 +26,10 @@ if ($page < 1) {
 }
 $offset = ($page - 1) * $rowsperpage;
 
-$sql = "SELECT * FROM posts ORDER BY id DESC LIMIT $offset, $rowsperpage";
+$sql = "SELECT * FROM posts WHERE `post_cat` LIKE '$cat' ORDER BY id DESC LIMIT $offset, $rowsperpage ";
 $result = mysqli_query($dbcon, $sql);
+
+
 
 if (mysqli_num_rows($result) < 1) {
     echo '<div class="w3-panel w3-pale-red w3-card-2 w3-border w3-round">Nothing to display</div>';
@@ -46,7 +51,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo sprintf('
     <div class="row mt-lg-5">
         <div class="col-md-7">
-          <a href="post.php?id=%s">
+          <a href="../post.php?id=%s">
             <img class="img-fluid align-content-md-center rounded" src=%s alt="" width="400" height="300">
           </a>
           <hr>
@@ -65,7 +70,7 @@ while ($row = mysqli_fetch_assoc($result)) {
               
       
       ',
-    $id, $image_url, $id ,$title, $category, substr( $des, 0, 100), $posted_by, $time, $slug);
+        $id, $image_url, $id ,$title, $category, substr( $des, 0, 100), $posted_by, $time, $slug);
 
 }
 
