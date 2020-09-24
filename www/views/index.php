@@ -6,7 +6,6 @@ $page_heading = "Pure PHP Blog";
 $page_subheading = "No framework, no nothin only PHP, by Alper Anapali";
 
 include 'includes/header.php';
-include 'includes/security.php';
 ?>
 <div class="container">
 <?php

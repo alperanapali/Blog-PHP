@@ -8,7 +8,7 @@ while($row = mysqli_fetch_assoc($result))
 {
     $category_get = $row['catname'];
     echo sprintf("
-    <a href='category.php?catname=%s' class='badge badge-secondary'> $category_get </a>", $category_get )
+    <a href='/categories/%s' class='badge badge-secondary'> $category_get </a>", $category_get )
     ;
 
 }

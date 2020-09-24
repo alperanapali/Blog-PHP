@@ -1,8 +1,13 @@
 <?php
 session_start();
 ob_start();
-$page_title = $_GET['catname'];
-$page_heading = $_GET['catname'];
+
+$uri = $_SERVER['REQUEST_URI'];
+$explode = explode('/',$uri);
+$slug = $explode[2];
+
+$page_title = $slug;
+$page_heading = $slug;
 
 include 'includes/header.php';
 include 'includes/security.php';

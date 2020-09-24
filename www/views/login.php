@@ -1,8 +1,8 @@
 <?php
 session_start();
 ob_start();
-Include("includes/header.php");
-Include("includes/connect.php");
+include("includes/header.php");
+include("includes/connect.php");
 
 if (isset($_POST['log'])) {
     $username = mysqli_real_escape_string($dbcon, $_POST['username']);
@@ -19,14 +19,14 @@ if (isset($_POST['log'])) {
         }else{
             $_SESSION['is_admin'] = false;
         }
-        header("location: index.php");
+        header("location:/");
     } else {
         echo "incorrect details";
     }
 } else {
     ?>
     <div class="container" align="center"><h3>Login</h3></div>
-    <form action="login.php" method="POST" class="container" align="center">
+    <form action="/login" method="POST" class="container" align="center">
         <label> </label>
         <input type="text" name="username" class="form-control" placeholder="User Name">
         <br>
@@ -37,5 +37,5 @@ if (isset($_POST['log'])) {
     </form>
     <?php
 }
-Include("includes/footer.php");
+include("includes/footer.php");
 ob_end_flush();

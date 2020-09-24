@@ -1,16 +1,18 @@
 <?php
 session_start();
+
 include 'includes/postController.php';
-include 'includes/header.php'
+include 'includes/header.php';
+
 ?>
 
   <!-- Post Content -->
   <article>
-    <div class="container"  >
+    <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto ">
             <div>
-                <img style='height: 100%; width: 100%; object-fit: contain' src="<?php echo $image_url; ?>" alt="">
+                <img style='height: 100%; width: 100%; object-fit:contain ' src="<?php echo $image_url; ?>" alt="">
             </div>
             <span class="badge badge-primary"><?php echo $category; ?></span>
             <p class="post-meta"><b>Posted by </b><?php echo $by; ?></p>

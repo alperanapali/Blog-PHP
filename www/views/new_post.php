@@ -18,14 +18,14 @@ if (isset($_POST['submit'])) {
 
     mysqli_query($dbcon, $sql2);
 
-    printf("Posted successfully. <meta http-equiv='refresh' content='2; url=post.php?id=%d'/>",
-        mysqli_insert_id($dbcon));
+    printf("Posted successfully. <meta http-equiv='refresh' content='2; url=post/%s'/>",
+        $slug);
 
 
 } else {
     echo '
     <div class="container" >
-    <form action="new_post.php" class="container" method="POST" >
+    <form class="container" method="POST" >
         <label for="title">Title</label>
                 <br>
         <input type="text" class="post-title" name="title" required>

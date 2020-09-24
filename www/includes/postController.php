@@ -2,21 +2,23 @@
 
 include("connect.php");
 
+$uri =$_SERVER['REQUEST_URI'];
+$explode = explode('/',$uri);
+$slug = $explode[2];
 
 //$id = (INT)$_GET['id'];
-
-$slug = $_GET['slug'];
 
 /*if ($slug < 1) {
     header("location: index.php");
 }*/
 
+//$sql = "Select * FROM posts WHERE slug like '%'.'$slug'.'%'  ";
 $sql = "Select * FROM posts WHERE slug = '$slug'";
+
 $result = mysqli_query($dbcon, $sql);
 
 $invalid = mysqli_num_rows($result);
 if ($invalid == 0) {
-    header("location: index.php");
 }
 
 if (isset($_POST['like_button'])) {
