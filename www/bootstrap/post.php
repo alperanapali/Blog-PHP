@@ -64,6 +64,9 @@ EOD;
 echo $html_comment;
 
 }
+include 'includes/footer.php';
+
+
 ?>
 
 

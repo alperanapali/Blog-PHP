@@ -25,13 +25,13 @@ if (isset($_POST['log'])) {
     }
 } else {
     ?>
-    <div class="container-md" align="center"><h3>Login</h3></div>
+    <div class="container" align="center"><h3>Login</h3></div>
     <form action="login.php" method="POST" class="container" align="center">
         <label> </label>
-        <input type="text" name="username" class="w3-input w3-border" placeholder="User Name">
+        <input type="text" name="username" class="form-control" placeholder="User Name">
         <br>
         <label></label>
-        <input type="password" name="password" class="card-text" placeholder="Password">
+        <input type="password" name="password" class="form-control" placeholder="Password">
         <br>
         <input type="submit" name="log" value="Login" class="btn btn-primary">
     </form>

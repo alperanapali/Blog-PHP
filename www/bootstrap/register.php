@@ -31,7 +31,7 @@ function does_registry_entries_match($entry, $confirm_entry, $type = ['password'
             return $entry;
         }
     } else{
-        echo "Emails does not match";
+        echo $type."s does not match <br>";
     }
 
 }

@@ -25,6 +25,7 @@ include 'includes/security.php';
     </div>
   </div>
 <?php
-include 'includes/footer.php';
 ob_end_flush();
+
+include 'includes/footer.php';
 ?>

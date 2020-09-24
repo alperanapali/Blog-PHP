@@ -12,7 +12,10 @@ if (isset($_GET['q'])) {
     $result = mysqli_query($dbcon, $sql);
     $r = mysqli_fetch_row($result);
     $numrows = $r[0];
+
+    echo '<div class="container"><i>';
     echo $numrows ." results found" ;
+    echo "</i></div>";
 
     $rowsperpage = 5;
     $totalpages = ceil($numrows / $rowsperpage);
@@ -33,9 +36,6 @@ if (isset($_GET['q'])) {
     $sql = "SELECT * FROM posts WHERE title LIKE '%$q%' OR description LIKE '%$q%' ORDER BY id DESC LIMIT $offset, $rowsperpage";
     $result = mysqli_query($dbcon, $sql);
 
-    if (mysqli_num_rows($result) < 1) {
-        echo '<div class="w3-panel w3-pale-red w3-card-2 w3-border w3-round">Nothing to display</div>';
-    }
 
     while ($row = mysqli_fetch_assoc($result)) {
 
@@ -49,6 +49,7 @@ if (isset($_GET['q'])) {
         $time = htmlentities($row['date']);
 
         echo sprintf('
+<div class="container">
     <div class="row mt-lg-5">
         <div class="col-md-7">
           <a href="post.php?id=%s">
@@ -59,13 +60,13 @@ if (isset($_GET['q'])) {
         <div class="col-md-5">
           <h3><a href="post.php?id=%s">%s</a></h3>
           <p>%s</p>
-          <p class="post-meta">Posted by</p> 
+          <p class="post-meta"><b>Posted by</b></p> 
           <a href="#"  >%s</a>
-          <p>on %s</p>
+          <p><b>on</b> %s</p>
           <a class="btn btn-primary" href="post.php?id=%s">Read More</a>
             <hr>
           </div>
-              
+            </div>  
       
       ',
             $id, $image_url, $id, $title, substr($des, 0, 100), $posted_by, $time, $id);

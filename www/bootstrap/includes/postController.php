@@ -3,11 +3,15 @@
 include("connect.php");
 
 
-$id = (INT)$_GET['id'];
-if ($id < 1) {
+//$id = (INT)$_GET['id'];
+
+$slug = $_GET['slug'];
+
+/*if ($slug < 1) {
     header("location: index.php");
-}
-$sql = "Select * FROM posts WHERE id = '$id'";
+}*/
+
+$sql = "Select * FROM posts WHERE slug = '$slug'";
 $result = mysqli_query($dbcon, $sql);
 
 $invalid = mysqli_num_rows($result);

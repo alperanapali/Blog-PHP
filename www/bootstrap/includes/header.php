@@ -68,7 +68,7 @@
                     <br>
                     <!-- Search -->
                     <form action="show_search.php" method="GET" class="container" >
-                        <input type="text" name="q" class="w3-input w3-border " placeholder="Search for anything" required>
+                        <input type="text" name="q" class="form-control" placeholder="Search for anything" required>
                         <input type="submit" class="btn btn-primary" value="Search">
                     </form>
                 </div>
