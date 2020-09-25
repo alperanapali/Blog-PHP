@@ -4,6 +4,13 @@ session_start();
 include('includes/header.php');
 include("includes/connect.php");
 
+$uri = $_SERVER['REQUEST_URI'];
+$explode = explode('/',$uri);
+
+$re = '/\?.+/m';
+preg_replace($re, '', $explode[1]);
+
+
 if (isset($_GET['q'])) {
     $q = mysqli_real_escape_string($dbcon, $_GET['q']);
 

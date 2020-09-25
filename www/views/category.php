@@ -1,13 +1,15 @@
 <?php
 session_start();
 ob_start();
+$re = '/\?.+/m';
 
 $uri = $_SERVER['REQUEST_URI'];
 $explode = explode('/',$uri);
-$slug = $explode[2];
+$slug = preg_replace($re, '', $explode[2]);
 
-$page_title = $slug;
-$page_heading = $slug;
+
+$page_title = preg_replace($re, '',$slug);
+$page_heading = preg_replace($re, '',$slug);
 
 include 'includes/header.php';
 include 'includes/security.php';

@@ -1,12 +1,12 @@
 <?php
 session_start();
 $path = $_SERVER['REQUEST_URI'];
-$path = substr($path, 1);
-$explode = explode('/',$path);
 
 $re = '/\?.+/m';
-$explode[0] = preg_replace($re, '',$explode[0]);
+$path = preg_replace($re, '',$path);
+$path = substr($path, 1);
 
+$explode = explode('/',$path);
 switch ($explode[0]) {
     case '' :
         require "views/index.php";
@@ -31,5 +31,14 @@ switch ($explode[0]) {
         break;
     case 'logout' :
         require "views/logout.php";
+        break;
+    case 'search' :
+        require "views/show_search.php";
+        break;
+    case 'profile' :
+        require "views/profile.php";
+        break;
+    case 'admin' :
+        require "views/admin_panel.php";
         break;
 }

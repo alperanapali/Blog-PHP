@@ -3,13 +3,12 @@ include("connect.php");
 
 // COUNT
 
-
 $sql = "SELECT COUNT('post_cat') FROM posts ";
 $result = mysqli_query($dbcon, $sql);
 $r = mysqli_fetch_row($result);
 $numrows = $r[0];
 
-$rowsperpage = 5;
+$rowsperpage = 4;
 $totalpages = ceil($numrows / $rowsperpage);
 
 if (isset($_GET['page']) && is_numeric($_GET['page'])) {
@@ -50,7 +49,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo sprintf('
     <div class="row mt-lg-5">
         <div class="col-md-7">
-          <a href="../views/post.php?id=%s">
+          <a href="/post/%s">
             <img class="img-fluid align-content-md-center rounded" src=%s alt="" width="400" height="300">
           </a>
           <hr>
@@ -63,13 +62,13 @@ while ($row = mysqli_fetch_assoc($result)) {
           <p class="post-meta"><b>Posted by</b></p> 
           <a href="#"  >%s</a>
           <p><b>on</b> %s</p>
-          <a class="btn btn-primary" href="%s">Read More</a>
+          <a class="btn btn-primary" href="/post/%s">Read More</a>
             <hr>
           </div>
               
       
       ',
-        $id, $image_url, $slug ,$title, $category, substr( $des, 0, 100), $posted_by, $time, $slug);
+        $slug, $image_url, $slug ,$title, $category, substr( $des, 0, 100), $posted_by, $time, $slug);
 
 }
 

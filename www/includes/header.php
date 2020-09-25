@@ -11,7 +11,7 @@
     <title><?php echo $page_title ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -67,7 +67,7 @@
                     <span class="subheading"><?php echo $page_subheading; ?></span>
                     <br>
                     <!-- Search -->
-                    <form method="GET" class="container" >
+                    <form action="search" method="GET" class="container" >
                         <input type="text" name="q" class="form-control" placeholder="Search for anything" required>
                         <input type="submit" class="btn btn-primary" value="Search">
                     </form>

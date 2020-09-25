@@ -22,7 +22,7 @@ if ($invalid == 0) {
 }
 
 if (isset($_POST['like_button'])) {
-    $hitsql = "UPDATE posts SET hits = hits +1 WHERE id = '$id'";
+    $hitsql = "UPDATE posts SET hits = hits +1 WHERE slug = '$slug'";
     mysqli_query($dbcon, $hitsql);
 }
 

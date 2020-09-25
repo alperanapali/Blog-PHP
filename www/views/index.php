@@ -4,7 +4,7 @@ ob_start();
 $page_title = "Home";
 $page_heading = "Pure PHP Blog";
 $page_subheading = "No framework, no nothin only PHP, by Alper Anapali";
-
+include 'includes/security.php';
 include 'includes/header.php';
 ?>
 <div class="container">

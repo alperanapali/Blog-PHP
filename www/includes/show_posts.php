@@ -46,7 +46,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo sprintf('
     <div class="row mt-lg-5">
         <div class="col-md-7">
-          <a href="../views/post.php?id=%s">
+          <a href="/post/%s">
             <img class="img-fluid align-content-md-center rounded" src=%s alt="" width="400" height="300">
           </a>
           <hr>
@@ -65,7 +65,7 @@ while ($row = mysqli_fetch_assoc($result)) {
               
       
       ',
-    $id, $image_url, $slug ,$title, $category, substr( $des, 0, 100), $posted_by, $time, $slug);
+    $slug, $image_url, $slug ,$title, $category, substr( $des, 0, 100), $posted_by, $time, $slug);
 
 }
 
