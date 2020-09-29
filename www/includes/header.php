@@ -20,7 +20,7 @@
 
     <!-- from old blog -->
     <script src="https://cdn.tiny.cloud/1/3ewdrxaq7tnikz0uz2ur8lybcyabvh33ua4gxzd0ger1v5uz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>tinymce.init({selector:'textarea'});</script>
+    <script>tinymce.init({selector:'textarea' ,height: "350"});</script>
 
     <!-- Custom styles for this template -->
     <link href="../css/clean-blog.min.css" rel="stylesheet">

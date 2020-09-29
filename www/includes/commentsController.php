@@ -1,6 +1,7 @@
 <?php
 //Adding a comment
 echo "<br>";
+include 'includes/connect.php';
 
 if (isset($_POST['submit'])) {
     $comment = mysqli_real_escape_string($dbcon, $_POST['comment']);
@@ -25,4 +26,3 @@ echo '
     </form>
     ';
 
-?>

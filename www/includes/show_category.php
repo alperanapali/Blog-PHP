@@ -3,9 +3,8 @@ include("includes/connectPDO.php");
 
 // COUNT
 
-$sql = "SELECT COUNT('post_cat') FROM posts ";
+$sql = "SELECT COUNT(*) FROM posts WHERE post_cat='$slug' ";
 
-/** @var PDO $conn */
 $stmt = $conn->query($sql);
 $numrows = $stmt->fetchColumn();
 $rowsperpage = 4;
@@ -36,8 +35,7 @@ while ($row = $stmt->fetch()) {
 
     $id = htmlentities($row['id']);
     $title = htmlentities($row['title']);
-    //$des = htmlentities($row['description']);
-    $des = $row['description'];
+    $des = htmlentities($row['description']);
     $posted_by = htmlentities($row['posted_by']);
     $hits = htmlentities($row['hits']);
     $image_url = htmlentities($row['image_url']);

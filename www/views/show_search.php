@@ -12,39 +12,39 @@ preg_replace($re, '', $explode[1]);
 
 
 if (isset($_GET['q'])) {
-    $q = mysqli_real_escape_string($dbcon, $_GET['q']);
+    $q = $_GET['q'];
 
 // COUNT
     $sql = "SELECT COUNT(*) FROM posts WHERE title LIKE '%{$q}%' OR description LIKE '%{$q}%'";
-    $result = mysqli_query($dbcon, $sql);
-    $r = mysqli_fetch_row($result);
-    $numrows = $r[0];
+    $stmt = $conn->query($sql);
+    $numrows = $stmt->fetch();
+
 
     echo '<div class="container"><i>';
-    echo $numrows ." results found" ;
+    echo $numrows[0] ." results found" ;
     echo "</i></div>";
 
-    $rowsperpage = 5;
-    $totalpages = ceil($numrows / $rowsperpage);
+//    $rowsperpage = 5;
+//    $totalpages = ceil($numrows[0] / $rowsperpage);
+//
+//    if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+//        $page = (int)$_GET['page'];
+//    }
+//
+//    if ($page > $totalpages) {
+//        $page = $totalpages;
+//    }
+//
+//    if ($page < 1) {
+//        $page = 1;
+//    }
+//    $offset = ($page - 1) * $rowsperpage;
 
-    if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-        $page = (int)$_GET['page'];
-    }
-
-    if ($page > $totalpages) {
-        $page = $totalpages;
-    }
-
-    if ($page < 1) {
-        $page = 1;
-    }
-    $offset = ($page - 1) * $rowsperpage;
-
-    $sql = "SELECT * FROM posts WHERE title LIKE '%$q%' OR description LIKE '%$q%' ORDER BY id DESC LIMIT $offset, $rowsperpage";
-    $result = mysqli_query($dbcon, $sql);
+    $sql = "SELECT * FROM posts WHERE title LIKE '%$q%' OR description LIKE '%$q%' ORDER BY id DESC ";
+    $stmt = $conn->query($sql);
 
 
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = $stmt->fetch()) {
 
         $id = htmlentities($row['id']);
         $title = htmlentities($row['title']);
@@ -80,25 +80,25 @@ if (isset($_GET['q'])) {
 
     }
 
-    echo "<div class='w3-bar w3-center'>";
-    if ($page > 1) {
-        echo "<a href='?page=1'>&laquo;</a>";
-        $prevpage = $page - 1;
-        echo "<a href='?page=$prevpage' class='w3-btn'><</a>";
-    }
-    $range = 5;
-    for ($x = $page - $range; $x < ($page + $range) + 1; $x++) {
-        if (($x > 0) && ($x <= $totalpages)) {
-            if ($x == $page) {
-                echo "<div class='btn btn-primary'>$x</div>";
-            } else {
-                echo "<a href='?page=$x' class='btn btn-primary'>$x</a>";
-            }
-        }
-    }
+//    echo "<div class='w3-bar w3-center'>";
+//    if ($page > 1) {
+//        echo "<a href='?page=1'>&laquo;</a>";
+//        $prevpage = $page - 1;
+//        echo "<a href='?page=$prevpage' class='w3-btn'><</a>";
+//    }
+//    $range = 5;
+//    for ($x = $page - $range; $x < ($page + $range) + 1; $x++) {
+//        if (($x > 0) && ($x <= $totalpages)) {
+//            if ($x == $page) {
+//                echo "<div class='btn btn-primary'>$x</div>";
+//            } else {
+//                echo "<a href='?page=$x' class='btn btn-primary'>$x</a>";
+//            }
+//        }
+//    }
 }
 
-
+include 'includes/footer.php';
 
 
 
