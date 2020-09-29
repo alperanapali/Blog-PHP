@@ -33,13 +33,14 @@ include 'includes/header.php';
     </div>
 </article>
 
-<!-- Comments -->
+
+    <!-- Comments -->
 <?php
 
 $csql = "Select * FROM comments WHERE post_id = '$id' AND verified = '1'  ";
-$cresult = mysqli_query($dbcon, $csql);
+$stmt = $conn->query($csql);
 
-while ($comment = mysqli_fetch_assoc($cresult)) {
+while ($comment = $stmt->fetch()) {
 
     $text = $comment['text'];
     $comment_date = $comment['date'];
@@ -64,8 +65,6 @@ EOD;
 
 include 'includes/footer.php';
 
-
-?>
 
 
 

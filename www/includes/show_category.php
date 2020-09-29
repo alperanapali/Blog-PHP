@@ -1,13 +1,13 @@
 <?php
-include("connect.php");
+include("includes/connectPDO.php");
 
 // COUNT
 
 $sql = "SELECT COUNT('post_cat') FROM posts ";
-$result = mysqli_query($dbcon, $sql);
-$r = mysqli_fetch_row($result);
-$numrows = $r[0];
 
+/** @var PDO $conn */
+$stmt = $conn->query($sql);
+$numrows = $stmt->fetchColumn();
 $rowsperpage = 4;
 $totalpages = ceil($numrows / $rowsperpage);
 
@@ -24,16 +24,15 @@ if ($page < 1) {
 }
 $offset = ($page - 1) * $rowsperpage;
 
+/** @var string $slug */
 $sql = "SELECT * FROM posts WHERE `post_cat` LIKE '$slug' ORDER BY id DESC LIMIT $offset, $rowsperpage ";
-$result = mysqli_query($dbcon, $sql);
+$stmt = $conn->query(@$sql);
 
-
-
-if (mysqli_num_rows($result) < 1) {
+if ($stmt->rowCount() < 1) {
     echo '<div class="w3-panel w3-pale-red w3-card-2 w3-border w3-round">Nothing to display</div>';
 }
 
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = $stmt->fetch()) {
 
     $id = htmlentities($row['id']);
     $title = htmlentities($row['title']);
@@ -55,7 +54,7 @@ while ($row = mysqli_fetch_assoc($result)) {
           <hr>
         </div>
         <div class="col-md-5">
-          <h3><a href="%s">%s</a></h3>
+          <h3><a href="/post/%s">%s</a></h3>
           <span class="badge badge-secondary">%s</span>
 
           <p>%s</p>

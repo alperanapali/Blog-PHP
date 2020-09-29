@@ -1,11 +1,10 @@
 <?php
-include("connect.php");
+include("connectPDO.php");
 
 // COUNT
 $sql = "SELECT COUNT(*) FROM posts";
-$result = mysqli_query($dbcon, $sql);
-$r = mysqli_fetch_row($result);
-$numrows = $r[0];
+$stmt = $conn->query($sql);
+$numrows = $stmt->fetchColumn();
 
 $rowsperpage = 5;
 $totalpages = ceil($numrows / $rowsperpage);
@@ -24,13 +23,13 @@ if ($page < 1) {
 $offset = ($page - 1) * $rowsperpage;
 
 $sql = "SELECT * FROM posts ORDER BY id DESC LIMIT $offset, $rowsperpage";
-$result = mysqli_query($dbcon, $sql);
+$stmt = $conn->query($sql);
 
-if (mysqli_num_rows($result) < 1) {
+if ($stmt->rowCount() < 1) {
     echo '<div class="w3-panel w3-pale-red w3-card-2 w3-border w3-round">Nothing to display</div>';
 }
 
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
     $id = htmlentities($row['id']);
     $title = htmlentities($row['title']);

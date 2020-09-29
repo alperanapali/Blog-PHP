@@ -41,4 +41,7 @@ switch ($explode[0]) {
     case 'admin' :
         require "views/admin_panel.php";
         break;
+    case 'test' :
+        require "views/test.php";
+        break;
 }

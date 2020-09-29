@@ -6,9 +6,9 @@ if (!isset($_SESSION['is_admin'])) {
 
 
 $csql = "Select * FROM comments ORDER BY date DESC ";
-$cresult = mysqli_query($dbcon, $csql);
+$stmt = $conn->query($csql);
 
-while ($comment = mysqli_fetch_assoc($cresult)) {
+while ($comment = $stmt->fetch()) {
 
     $text = $comment['text'];
     $comment_date = $comment['date'];
@@ -25,11 +25,15 @@ while ($comment = mysqli_fetch_assoc($cresult)) {
         <td>$text</td>
         <td>$verified</td>
 
-        <td><button name="verify_button" value="verify_button" type="submit" class="btn-toolbar"><span><i class="fa fa-check"></i></span> </button>
+        <td><input class="btn" name="verify_button" id="$id"  type="submit"><span><i class="fa fa-check"></i></span> </input>
     </tr>
 EOD;
 
     echo $html;
 }
 
-?>
+if (!isset($_POST['verify_button'])) {
+    echo $_POST['id'];
+
+}
+

@@ -2,21 +2,22 @@
 session_start();
 $page_heading = "New Post";
 include 'includes/header.php';
-include 'includes/connect.php';
+include 'includes/connectPDO.php';
 include 'includes/slugify.php';
 
 if (isset($_POST['submit'])) {
-    $title = mysqli_real_escape_string($dbcon, $_POST['title']);
-    $postcat = mysqli_real_escape_string($dbcon, $_POST['select']);
-    $description = mysqli_real_escape_string($dbcon, $_POST ['description']);
+    $title = htmlentities($_POST['title']);
+    $postcat = $_POST['select'];
+    $description = $_POST ['description'];
     $date = date('Y-m-d H:i');
-    $posted_by = mysqli_real_escape_string($dbcon, $_SESSION['username']);
-    $img_url = mysqli_real_escape_string($dbcon, $_POST['image_url']);
-    $slug = mysqli_real_escape_string($dbcon, slugify($title) );
+    $posted_by = $_SESSION['username'];
+    $img_url = $_POST['image_url'];
+    $slug = slugify($title);
 
-    $sql2 = "INSERT INTO `posts`(`id`, `title`, `post_cat`, `description`, `hits`, `posted_by`, `date`, `image_url`, `slug`) VALUES (NULL, '$title', '$postcat', '$description', '0', '$posted_by', '$date', '$img_url', '$slug')";
-
-    mysqli_query($dbcon, $sql2);
+    //$sql2 = "INSERT INTO `posts`(`id`, `title`, `post_cat`, `description`, `hits`, `posted_by`, `date`, `image_url`, `slug`) VALUES (NULL, '$title', '$postcat', '$description', '0', '$posted_by', '$date', '$img_url', '$slug')";
+    $sql = "INSERT INTO `posts`(`id`, `title`, `post_cat`, `description`, `hits`, `posted_by`, `date`, `image_url`, `slug`) VALUES (?, ?, ? ,?, ?, ?, ?, ? ,?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([NULL, $title, $postcat, $description, 0, $posted_by, $date, $img_url, $slug]);
 
     printf("Posted successfully. <meta http-equiv='refresh' content='2; url=post/%s'/>",
         $slug);

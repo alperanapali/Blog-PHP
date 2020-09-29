@@ -2,15 +2,18 @@
 session_start();
 ob_start();
 include("includes/header.php");
-include("includes/connect.php");
+include("includes/connectPDO.php");
 
 if (isset($_POST['log'])) {
-    $username = mysqli_real_escape_string($dbcon, $_POST['username']);
-    $password = mysqli_real_escape_string($dbcon, $_POST['password']);
-    $sql = "SELECT * FROM users WHERE username = '$username'";
-    $result = mysqli_query($dbcon, $sql);
-    $rows = mysqli_num_rows($result);
-    $fetch_result = mysqli_fetch_assoc($result);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM users WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$username]);
+
+    $rows = $stmt->rowCount();
+    $fetch_result = $stmt->fetch();
 
     if ($rows == 1 && ($password == $fetch_result['password'])) {
         $_SESSION['username'] = $username;

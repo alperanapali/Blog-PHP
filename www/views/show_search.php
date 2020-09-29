@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include('includes/header.php');
-include("includes/connect.php");
+include 'includes/header.php';
+include 'includes/connectPDO.php';
 
 $uri = $_SERVER['REQUEST_URI'];
 $explode = explode('/',$uri);
@@ -97,7 +97,6 @@ if (isset($_GET['q'])) {
         }
     }
 }
-?>
 
 
 

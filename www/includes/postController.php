@@ -1,6 +1,6 @@
 <?php
 
-include("connect.php");
+include("connectPDO.php");
 
 $uri =$_SERVER['REQUEST_URI'];
 $explode = explode('/',$uri);
@@ -15,18 +15,14 @@ $slug = $explode[2];
 //$sql = "Select * FROM posts WHERE slug like '%'.'$slug'.'%'  ";
 $sql = "Select * FROM posts WHERE slug = '$slug'";
 
-$result = mysqli_query($dbcon, $sql);
-
-$invalid = mysqli_num_rows($result);
-if ($invalid == 0) {
-}
+$stmt = $conn->query($sql);
+$row = $stmt->fetch();
 
 if (isset($_POST['like_button'])) {
-    $hitsql = "UPDATE posts SET hits = hits +1 WHERE slug = '$slug'";
-    mysqli_query($dbcon, $hitsql);
+    $hitsql = "UPDATE posts SET hits = hits +1 WHERE slug ='$slug'";
+    $stmt = $conn->query($hitsql);
 }
 
-$row = mysqli_fetch_assoc($result);
 
 $id = $row['id'];
 $title = $row['title'];
@@ -43,25 +39,3 @@ $page_title = $title;
 $page_heading = $title;
 $page_subheading = "by " . $by;
 
-//Comments
-
-
-?>
-
-
-
-
-
-
-
-<?php
-//if (isset($_SESSION['username'])) {
-//    ?>
-<!--    <br>-->
-<!--    <div class="w3-text-green"><a href="edit.php?id=--><?php //echo $row['id']; ?><!--">[Edit]</a></div>-->
-<!--    <div class="w3-text-red">-->
-<!--        <a href="del.php?id=--><?php //echo $row['id']; ?><!--"-->
-<!--           onclick="return confirm('Are you sure you want to delete this post?'); ">[Delete]</a></div>-->
-<!--    --><?php
-//}
-//echo '</div></div>';

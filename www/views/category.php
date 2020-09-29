@@ -7,7 +7,6 @@ $uri = $_SERVER['REQUEST_URI'];
 $explode = explode('/',$uri);
 $slug = preg_replace($re, '', $explode[2]);
 
-
 $page_title = preg_replace($re, '',$slug);
 $page_heading = preg_replace($re, '',$slug);
 
